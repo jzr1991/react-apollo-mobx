@@ -32,7 +32,7 @@ const styleSheet = createStyleSheet('Shell', (theme) => ({
             height: '100%',
         }
     },
-    root: { 
+    root: {
         height: '100%',
     }
 }));

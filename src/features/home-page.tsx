@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography';
 import AddIcon from 'material-ui-icons/Add';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { Titlebar } from 'core/components';
+import { Titlebar } from '../core/components';
 
 const styleSheet = createStyleSheet('HomePage', (theme) => ({
     root: {
@@ -54,7 +54,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
         return (
             <div className={classes.root}>
 
-                <Titlebar>React MobX MUI Seed</Titlebar>
+                <Titlebar>React MobX MUI Typescript Seed</Titlebar>
 
                 <div className={classes.content}>
 
