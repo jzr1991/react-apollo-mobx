@@ -1,7 +1,14 @@
 {
   "name": "react-frontend",
+  "description": "Seed project for react with mobx, material-ui and typescript",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.js",
+  "author": "saket Jain",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/archfirst/react-mobx-mui-ts-seed.git"
+  },
   "dependencies": {
     "@types/jest": "^20.0.2",
     "@types/node": "^8.0.9",
