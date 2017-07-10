@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import createPalette from 'material-ui/styles/palette';
 import createMuiTheme from 'material-ui/styles/theme';
 import createTypography from 'material-ui/styles/typography';
-import { blue, pink, red } from 'material-ui/styles/colors';
+import { blue, pink, red } from 'material-ui/colors';
 import { Provider } from 'mobx-react';
 import Shell from './shell';
 
