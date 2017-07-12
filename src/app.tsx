@@ -5,8 +5,10 @@ import createPalette from 'material-ui/styles/palette';
 import createMuiTheme from 'material-ui/styles/theme';
 import createTypography from 'material-ui/styles/typography';
 import { blue, pink, red } from 'material-ui/colors';
-import { Provider } from 'mobx-react';
+//import { Provider } from 'mobx-react';
 import Shell from './shell';
+import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
+import { Provider } from 'mobx-react';
 
 let styleManager;
 
@@ -34,13 +36,23 @@ class App extends React.Component<{}, {}> {
             styleManager.updateTheme(theme);
         }
 
+        const networkInterface = createNetworkInterface({
+            uri: 'http://localhost:4000/graphql'
+        });
+
+        const client = new ApolloClient({
+            networkInterface: networkInterface
+        });
+
         return (
             <MuiThemeProvider theme={theme} styleManager={styleManager}>
-                <Provider>
-                    <Router>
-                        <Shell />
-                    </Router>
-                </Provider>
+                <ApolloProvider client={client}>
+                    <Provider>
+                        <Router>
+                            <Shell />
+                        </Router>
+                    </Provider>
+                </ApolloProvider>
             </MuiThemeProvider>
         );
     }

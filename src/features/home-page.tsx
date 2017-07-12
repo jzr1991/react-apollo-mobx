@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
 import { createStyleSheet, withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import AddIcon from 'material-ui-icons/Add';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { Titlebar } from '../core/components';
+import { Titlebar, ContestWithData } from '../core/components';
+//import ContestStore from '../core/components/contest/contest-store';
 
 const styleSheet = createStyleSheet('HomePage', (theme) => ({
     root: {
@@ -50,6 +50,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
 
     render() {
         const { classes } = this.props;
+        //const contestStore = new ContestStore();
 
         return (
             <div className={classes.root}>
@@ -73,21 +74,11 @@ class HomePage extends React.Component<HomePageProps, {}> {
                     </div>
 
                     <Typography type="title" className={classes.demoTitle}>
-                        Text Field Using MobX
+                        Apollo with Mobx demo
                     </Typography>
                     <div className={classes.demoContainer}>
-                        <TextField
-                            id="name"
-                            label="Name"
-                            className={classes.input}
-                            value={this.name}
-                            onChange={(event) => this.onChange(event)}
-                        />
+                        <ContestWithData></ContestWithData>
                     </div>
-                    <Typography type="body2">
-                        {this.name}
-                    </Typography>
-
                 </div>
 
             </div>
