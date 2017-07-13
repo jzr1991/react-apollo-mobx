@@ -2,10 +2,12 @@
 
 ### Overview
 This app is a very basic React app that demonstrates the interplay of
-React, Mobx and Apollo Client. This has dependency on graphql-server project.
-Server app should be up and running to access graphql features
+React, Mobx and Apollo Client. 
 
-## Getting Started
+### Server dependecy
+This app has a dependency on graphql-server project. Server app should be up and running to access graphql features
+
+### Getting Started
 
 In the project directory, you can run:
 
