@@ -1,41 +1,46 @@
-import { ContestType } from '../../../interfaces';
+import { ContestType, Contest } from '../../../interfaces';
 import { observable, action } from 'mobx';
 
 export default class ContestStore {
-  
-  contestList: Array<ContestType>
+
+  contestList: Array<ContestType>;
 
   @observable
-  contest: ContestType
+  contest: ContestType;
 
-  setContestList(contestList) {
+  constructor() {
+    this.contestList = [];
+    this.contest = new Contest();
+  }
+
+  setContestList(contestList: Array<ContestType>) {
     this.contestList = contestList;
   }
 
-  setContest(contest) {
+  setContest(contest: ContestType) {
     this.contest = contest;
-  } 
+  }
 
   @action
-  updateTitle(title) {
+  updateTitle(title: string) {
     this.contest.title = title;
-  } 
+  }
 
   @action
-  updateCode(code) {
+  updateCode(code: string) {
     this.contest.code = code;
-  } 
+  }
 
   @action
-  updateDescription(description) {
+  updateDescription(description: string) {
     this.contest.description = description;
-  } 
+  }
 
   @action
-  handleSelection(key) {
-    let contest = this.contestList.find((contest) => {
-      return contest.id === key;
-    })
+  handleSelection(key: string) {
+    let contest = this.contestList.find((c) => {
+      return c.id === key;
+    });
     this.contest = contest;
   }
 }

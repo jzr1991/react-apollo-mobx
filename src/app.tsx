@@ -5,7 +5,6 @@ import createPalette from 'material-ui/styles/palette';
 import createMuiTheme from 'material-ui/styles/theme';
 import createTypography from 'material-ui/styles/typography';
 import { blue, pink, red } from 'material-ui/colors';
-//import { Provider } from 'mobx-react';
 import Shell from './shell';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { Provider } from 'mobx-react';

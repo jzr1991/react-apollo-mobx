@@ -1,1 +1,1 @@
-export { UserQueryVariables, UserQuery, ContestType } from './interfaces';
+export { UserQueryVariables, UserQuery, ContestType, Contest } from './interfaces';

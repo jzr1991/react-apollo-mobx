@@ -20,4 +20,11 @@ export interface ContestType {
   title: string
   description: string
 }
+
+export class Contest implements ContestType {
+  id: string = '';
+  code: string = '';
+  title: string = '';
+  description: string = '';
+}
 /* tslint:enable */

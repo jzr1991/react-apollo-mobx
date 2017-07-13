@@ -6,7 +6,6 @@ import AddIcon from 'material-ui-icons/Add';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { Titlebar, ContestWithData } from '../core/components';
-//import ContestStore from '../core/components/contest/contest-store';
 
 const styleSheet = createStyleSheet('HomePage', (theme) => ({
     root: {
@@ -50,7 +49,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
 
     render() {
         const { classes } = this.props;
-        //const contestStore = new ContestStore();
+        // const contestStore = new ContestStore();
 
         return (
             <div className={classes.root}>
@@ -77,7 +76,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
                         Apollo with Mobx demo
                     </Typography>
                     <div className={classes.demoContainer}>
-                        <ContestWithData></ContestWithData>
+                        <ContestWithData/>
                     </div>
                 </div>
 

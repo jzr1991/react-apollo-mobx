@@ -3,64 +3,47 @@
 import * as React from 'react';
 import ContestGrid  from './contest-grid';
 import ContestEditor from './contest-editor';
-import { ContestType } from '../../../interfaces/interfaces';
 import { graphql, gql } from 'react-apollo';
 import ContestStore from './contest-store';
 
-interface CourseLayoutProps {
-    contestList: Array<ContestType>
-    contest: ContestType
-    store: ContestStore
+class CourseLayoutProps {
+    store: ContestStore;
 }
 
 const ContestLayout = (props: CourseLayoutProps) => {
+    const store = props.store;
     return (
         <div>
             <div className="col-xs-8">
-              <ContestGrid handleSelection={(key) => props.store.handleSelection(key)} contestList={props.contestList}/>
+              <ContestGrid handleSelection={(key) => store.handleSelection(key)} contestList={store.contestList}/>
             </div>
             <div className="col-xs-4">
-              <ContestEditor store={props.store} contest={props.contest} mutate={() => {}}/>
+              <ContestEditor store={props.store}/>
             </div>
         </div>
     );
-}
-
+};
 
 const options = () => ({
-    options: {
-        variables: {
-            id: "4242"
-        }
-    },
     props: (props) => {
-        let resp = {};
+        let resp = new CourseLayoutProps();
         let contestStore = new ContestStore();
-        if(props.data && props.data.me && props.data.me.contests){
-            resp['contestList'] = props.data.me.contests;
-            resp['contest'] = props.data.me.contests[0];
-        } else{
-            resp['contestList'] = [];
-            resp['contest'] = {};
+        if (props.data && props.data.contests) {
+            contestStore.setContestList(props.data.contests);
         }
-        contestStore.setContest(resp['contest']);
-        contestStore.setContestList(resp['contestList']);
-        resp['store'] = contestStore;
+        resp.store = contestStore;
         return resp;
     }
 });
 
-
-const query = gql ` 
-query contestList($id: String!) {
-  me (key: $id) {
+const query = gql `
+query contestList {
     contests {
         id
         code
         title
         description
     }
-  }
 }
 `;
 

@@ -1,1 +1,18 @@
-This is a demo project which demonstrates the interpay of react, apollo-client and mobx.
+# React + Apollo + Mobx Client App
+
+### Overview
+This app is a very basic React app that demonstrates the interplay of
+React, Mobx and Apollo Client. This has dependency on graphql-server project.
+Server app should be up and running to access graphql features
+
+## Getting Started
+
+In the project directory, you can run:
+
+`npm install`
+
+This would download all the dependencies required by project
+
+`npm start`
+
+Starts React App on http://localhost:3000
