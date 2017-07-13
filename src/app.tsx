@@ -8,6 +8,7 @@ import { blue, pink, red } from 'material-ui/colors';
 import Shell from './shell';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { Provider } from 'mobx-react';
+import ContestStore from './core/components/contest/contest-store';
 
 let styleManager;
 
@@ -43,10 +44,12 @@ class App extends React.Component<{}, {}> {
             networkInterface: networkInterface
         });
 
+        const store = new ContestStore();
+
         return (
             <MuiThemeProvider theme={theme} styleManager={styleManager}>
                 <ApolloProvider client={client}>
-                    <Provider>
+                    <Provider {...{store}}>
                         <Router>
                             <Shell />
                         </Router>

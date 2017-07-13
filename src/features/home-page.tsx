@@ -4,8 +4,9 @@ import { createStyleSheet, withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import AddIcon from 'material-ui-icons/Add';
 import { action, observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Titlebar, ContestWithData } from '../core/components';
+import ContestStore from '../core/components/contest/contest-store';
 
 const styleSheet = createStyleSheet('HomePage', (theme) => ({
     root: {
@@ -34,8 +35,10 @@ const styleSheet = createStyleSheet('HomePage', (theme) => ({
 interface HomePageProps {
     // tslint:disable-next-line
     classes: any;
+    store: ContestStore;
 }
 
+@inject('store')
 @observer
 class HomePage extends React.Component<HomePageProps, {}> {
 
@@ -76,7 +79,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
                         Apollo with Mobx demo
                     </Typography>
                     <div className={classes.demoContainer}>
-                        <ContestWithData/>
+                        <ContestWithData store={this.props.store} contestList={this.props.store.contestList}/>
                     </div>
                 </div>
 

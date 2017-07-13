@@ -24,8 +24,8 @@ export default class ContestGrid extends React.Component <ContestGridProps, any>
                     <ContestHeader/>
                     <TableBody>
                         {
-                            contestList.map((contest, key) => {
-                                return <ContestRow handleSelection={handleSelection} contest={contest}/>;
+                            contestList.map((contest, idx) => {
+                                return <ContestRow key={idx} handleSelection={handleSelection} contest={contest}/>;
                             })
                         }
                     </TableBody>
