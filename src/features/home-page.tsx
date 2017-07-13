@@ -79,7 +79,7 @@ class HomePage extends React.Component<HomePageProps, {}> {
                         Apollo with Mobx demo
                     </Typography>
                     <div className={classes.demoContainer}>
-                        <ContestWithData store={this.props.store} contestList={this.props.store.contestList}/>
+                        <ContestWithData store={this.props.store}/>
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@ import { ContestType } from '../../../interfaces';
 
 class CourseLayoutProps {
     store: ContestStore;
-    contestList: Array<ContestType>;
+    contestList?: Array<ContestType>;
 }
 
 
