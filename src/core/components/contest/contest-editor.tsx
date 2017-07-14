@@ -1,4 +1,3 @@
-// Example: <Titlebar>Home</Titlebar>
 
 import * as React from 'react';
 import { ContestType } from '../../../interfaces';
@@ -6,17 +5,17 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import { observer } from 'mobx-react';
 import ContestStore from './contest-store';
-import { graphql, gql } from 'react-apollo';
 
 interface ContestEditorProps {
     store: ContestStore;
-    mutate?: any;
+    handleSave: (contest: ContestType) => void;
 }
 
 @observer
-export class ContestEditor extends React.Component<ContestEditorProps, undefined> {
+export default class ContestEditor extends React.Component<ContestEditorProps, undefined> {
     render() {
         const store = this.props.store;
+        const handleSave = this.props.handleSave;
         return (
             <div>
                 <div className="row">
@@ -38,45 +37,9 @@ export class ContestEditor extends React.Component<ContestEditorProps, undefined
                     <label>{' '}</label>
                 </div>
                 <div className="row">
-                    <Button raised={true} color="primary" onClick={this.handleSave}>Save</Button>
+                    <Button raised={true} color="primary" onClick={() => handleSave(store.contest)}>Save</Button>
                 </div>
             </div>
         );
     }
-
-    handleSave = () => {
-        this.props.mutate({variables: this.input(this.props.store.contest)});
-    }
-
-    input = (contest: ContestType) => {
-        return {
-            'input': {
-                'id': contest.id,
-                'code': contest.code,
-                'title': contest.title,
-                'description': contest.description
-            }
-        };
-    }
 }
-
-const mutation = gql `
-mutation AddNewContest($input: ContestInputType!) {
-	addContest(input: $input) {
-        id
-        code
-        title
-        description
-  }
-}
-`;
-
-const options = () => ({
-    options: {
-        refetchQueries: [
-            'contestList'
-        ]
-    }
-});
-
-export default graphql<any, ContestEditorProps>(mutation, options())(ContestEditor);
