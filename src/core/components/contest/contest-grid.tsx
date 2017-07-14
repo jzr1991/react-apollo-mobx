@@ -14,7 +14,7 @@ interface ContestRow {
     handleSelection: (key: string) => void;
 }
 
-export default class ContestGrid extends React.Component <ContestGridProps, any> {
+export default class ContestGrid extends React.Component <ContestGridProps, undefined> {
     render () {
         let contestList = this.props.contestList;
         let handleSelection = this.props.handleSelection;
@@ -35,7 +35,7 @@ export default class ContestGrid extends React.Component <ContestGridProps, any>
     }
 }
 
-class ContestHeader extends React.Component <any, any> {
+class ContestHeader extends React.Component <undefined, undefined> {
     render() {
         return (
             <TableHead>
@@ -49,7 +49,7 @@ class ContestHeader extends React.Component <any, any> {
     }
 }
 
-class ContestRow extends React.Component <any, any> {
+class ContestRow extends React.Component <any, undefined> {
     render() {
         const {contest: {id, code, title}, handleSelection} = this.props;
         return (
